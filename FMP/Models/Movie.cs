@@ -1,23 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FMP.Models
 {
-    public class Movie
+    public partial class Movie
     {
-        [Required]
-        [Key]
+        public Movie()
+        {
+            Tickets = new HashSet<Ticket>();
+        }
+
         public int Id { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Title { get; set; }
-        [Required]
+        public string Title { get; set; } = null!;
         public DateTime Date { get; set; }
-        [Required]
         public int Price { get; set; }
-        [DisplayFormat(DataFormatString = "{0:HH:mm:ss}")]
-        public string? Movie_Duration { get; set; }
+        public string? MovieDuration { get; set; }
         public string? Description { get; set; }
-        public virtual ICollection<Ticket> Tickets { get;}
+
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

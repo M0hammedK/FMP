@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FMP.Models
 {
-    public partial class Customer
+    public class NewCustomer
     {
-        public Customer()
-        {
-            Tickets = new HashSet<Ticket>();
-        }
-
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int Age { get; set; }
         public string Email { get; set; } = null!;
@@ -19,6 +11,5 @@ namespace FMP.Models
         public string Password { get; set; } = null!;
         [NotMapped]
         public string Password2 { get; set; }
-        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }
